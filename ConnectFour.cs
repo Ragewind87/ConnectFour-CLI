@@ -27,9 +27,11 @@ namespace ConnectFourCLI {
         private static bool CheckForWin(List<List<char>> board, int lpY, int lpX, char piece) {
             //vertical win
             var count = 0;
-            for (int y = lpY, x = lpX; y >= 0; y--) {
+            for (int y = lpY, x = lpX; y < board.Count; y++) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             if (count >= 4)
                 return true;
@@ -39,10 +41,14 @@ namespace ConnectFourCLI {
             for (int y = lpY, x = lpX; x >= 0; x--) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             for (int y = lpY, x = lpX + 1; x < board[y].Count; x++) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             if (count >= 4)
                 return true;
@@ -52,10 +58,14 @@ namespace ConnectFourCLI {
             for (int y = lpY, x = lpX; y >= 0 && x < board[y].Count; y--, x++) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             for (int y = lpY + 1, x = lpX - 1; y < board.Count && x >= 0; y++, x--) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             if (count >= 4)
                 return true;
@@ -65,10 +75,14 @@ namespace ConnectFourCLI {
             for (int y = lpY, x = lpX; y >= 0 && x >= 0; y--, x--) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             for (int y = lpY + 1, x = lpX + 1; y < board.Count && x < board[y].Count; y++, x++) {
                 if (board[y][x] == piece)
                     count++;
+                else
+                    break;
             }
             if (count >= 4)
                 return true;
